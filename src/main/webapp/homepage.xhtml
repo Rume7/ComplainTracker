@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"          
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Welcome Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        
+        <p:panel>
+            
+            <h2>Welcome to the home page</h2>
+            
+            <f:facet name="footer">
+                    <h:form>
+                        <p:commandButton value="Login" action="#{homeController.login()}" />
+                        <p:commandButton value="Register" action="#{homeController.registerUser()}" />
+                    </h:form>
+                </f:facet>            
+        </p:panel>
+        
+    </h:body>
+</html>

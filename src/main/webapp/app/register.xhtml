@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <f:view>
+        <head>
+            <title>Complain supply a title</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        </head>
+        <body>
+
+
+            <h1>Complain all the way</h1>
+
+            <p:panel>
+                <div class="ui-g">
+                    <div class="uig-4">
+                        <h3 style="text-align: center">Complete the registration</h3>
+                    </div>
+
+                    <h:form id="register">
+                        <p:messages id="messages" globalOnly="true" />
+                        <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto">
+                            <p:outputLabel for="username" value="Username:" />
+                            <p:inputText id="username" type="text" value="#{registrationController.username}" />
+                            <p:message for="username" />
+                            
+                            <p:outputLabel for="emailAddress" value="Email Address:" />
+                            <p:inputText id="emailAddress" type="email" value="#{registrationController.emailAddress}" />
+                            <p:message for="emailAddress" />
+
+                            <p:outputLabel for="firstName" value="First Name:" />
+                            <p:inputText id="firstName" type="text" value="#{registrationController.firstname}" />
+                            <p:message for="firstName" />
+                            
+                            <p:outputLabel for="lastName" value="Last Name:" />
+                            <p:inputText id="lastName" type="text" value="#{registrationController.lastname}" />
+                            <p:message for="lastName" />                          
+                            
+                            <p:outputLabel for="password" value="Password" />
+                            <p:inputText id="password" type="password" value="#{registrationController.password}" />
+                            <p:message for="password" />
+
+                            <p:outputLabel for="confirmPassword" value="Confirm Password" />
+                            <p:inputText id="confirmPassword" type="password" value="#{registrationController.confirmPassword}" />
+                            <p:message for="confirmPassword" />
+                            
+                            <p:commandButton id="submit" update="@form" value="Register"
+                                             action="#{registrationController.submit()}" ajax="false" />
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </p:panel>
+
+
+        </body>
+    </f:view>
+</html>
