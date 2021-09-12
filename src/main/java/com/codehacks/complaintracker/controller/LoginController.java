@@ -22,19 +22,19 @@ import javax.validation.constraints.NotEmpty;
 @RequestScoped
 @Named
 public class LoginController {
-    
+
     @NotEmpty
     private String email;
-    
+
     @NotEmpty
     private String password;
 
     @Inject
     FacesContext facesContext;
-    
+
     @Inject
     SecurityContext securityContext;
-    
+
     public String getEmail() {
         return email;
     }
@@ -50,9 +50,9 @@ public class LoginController {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public void execute() throws IOException {
-        switch(processAuthentication()) {
+        switch (processAuthentication()) {
             case SEND_CONTINUE:
                 facesContext.responseComplete();
                 break;
@@ -61,21 +61,21 @@ public class LoginController {
                         FacesMessage.SEVERITY_ERROR, "Invalid credentials", null));
                 break;
             case SUCCESS:
-                getExternalContext().redirect(getExternalContext().getRequestContextPath() 
-                        + "/app/index.xhtml");
+                getExternalContext().redirect(getExternalContext().getRequestContextPath()
+                        + "/app/complaintpage.xhtml");
                 break;
         }
     }
-    
+
     private AuthenticationStatus processAuthentication() {
         ExternalContext ec = getExternalContext();
-        return securityContext.authenticate((HttpServletRequest)ec.getRequest(),
-                (HttpServletResponse)ec.getResponse(), 
+        return securityContext.authenticate((HttpServletRequest) ec.getRequest(),
+                (HttpServletResponse) ec.getResponse(),
                 AuthenticationParameters.withParams().
                         credential(new UsernamePasswordCredential(email, password)));
     }
-    
+
     private ExternalContext getExternalContext() {
         return facesContext.getExternalContext();
-    }    
+    }
 }

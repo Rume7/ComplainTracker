@@ -6,7 +6,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.security.enterprise.SecurityContext;
 import javax.servlet.ServletException;
 import javax.validation.constraints.NotEmpty;
 
@@ -20,9 +19,6 @@ public class RegistrationController {
 
     @Inject
     RegisterDataService registerDataService;
-
-    @Inject
-    SecurityContext securityContext;
 
     @Inject
     FacesContext facesContext;
@@ -99,7 +95,7 @@ public class RegistrationController {
         if (getPassword().equals(getConfirmPassword())) {
             registeredUser = new Registration(username, firstname, lastname, emailAddress, password);
             registerDataService.registerUser(registeredUser);
-            return "/app/complaintpage.xhtml?faces-redirect=true";
+            return "/app/login.xhtml?faces-redirect=true";
         }
         return "/register.xhtml?faces-redirect=true";
     }

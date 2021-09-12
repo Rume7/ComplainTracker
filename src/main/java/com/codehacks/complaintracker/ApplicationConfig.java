@@ -12,7 +12,7 @@ import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
  */
 @DatabaseIdentityStoreDefinition(
         dataSourceLookup = "jdbc/complaintracker",
-        callerQuery = "select user_password from users where username = ?",
+        callerQuery = "select * from users",
         groupsQuery = "select email from users where username = ?"
 )
 @CustomFormAuthenticationMechanismDefinition(

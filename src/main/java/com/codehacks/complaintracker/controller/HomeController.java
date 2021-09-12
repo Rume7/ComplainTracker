@@ -12,7 +12,6 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.security.enterprise.SecurityContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,9 +21,6 @@ public class HomeController {
     
     @Inject
     DataService dataService;
-    
-    @Inject
-    SecurityContext securityContext;
     
     @Inject
     FacesContext facesContext;
