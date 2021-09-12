@@ -1,9 +1,6 @@
 package com.codehacks.complaintracker.dao;
 
-import com.codehacks.complaintracker.entities.User;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.Initialized;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 /**
@@ -17,10 +14,11 @@ public class DataInitializer {
     @Inject
     DataService dataService;
     
+    /*
     public void execute(@Observes @Initialized(ApplicationScoped.class) Object event) {
         if (dataService.getAllUsers().isEmpty()) {
-            User sally = dataService.createUser("sally@gmail.com", "Sally", "sally", "admin");
-            User tom = dataService.createUser("tomtom@gmail.com", "Tom", "tom", "user");
+            //User sally = dataService.createUser("sally@gmail.com", "Sally", "sally", "admin");
+            //User tom = dataService.createUser("tomtom@gmail.com", "Tom", "tom", "user");
      
             //dataService.createQuality("Wonderful", sally);
             //dataService.createQuality("Good Judgement", sally);
@@ -32,5 +30,5 @@ public class DataInitializer {
             //dataService.createQuality("Responsible", tom);
             
         }
-    }
+    }*/
 }

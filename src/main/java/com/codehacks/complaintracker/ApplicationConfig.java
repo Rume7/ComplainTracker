@@ -12,8 +12,8 @@ import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
  */
 @DatabaseIdentityStoreDefinition(
         dataSourceLookup = "jdbc/complaintracker",
-        callerQuery = "select * from users",
-        groupsQuery = "select email from users where username = ?"
+        callerQuery = "select Password from employee where email = ?",
+        groupsQuery = "select user_group from employee where email = ?"
 )
 @CustomFormAuthenticationMechanismDefinition(
         loginToContinue = @LoginToContinue(

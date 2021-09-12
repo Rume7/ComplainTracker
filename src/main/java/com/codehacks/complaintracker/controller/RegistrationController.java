@@ -1,6 +1,8 @@
 package com.codehacks.complaintracker.controller;
 
+import com.codehacks.complaintracker.dao.DataService;
 import com.codehacks.complaintracker.dao.RegisterDataService;
+import com.codehacks.complaintracker.entities.Employee;
 import com.codehacks.complaintracker.entities.Registration;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -19,6 +21,9 @@ public class RegistrationController {
 
     @Inject
     RegisterDataService registerDataService;
+    
+    @Inject 
+    DataService dataService;
 
     @Inject
     FacesContext facesContext;
@@ -95,6 +100,8 @@ public class RegistrationController {
         if (getPassword().equals(getConfirmPassword())) {
             registeredUser = new Registration(username, firstname, lastname, emailAddress, password);
             registerDataService.registerUser(registeredUser);
+            Employee user = new Employee(emailAddress, username, password, "Regular");
+            dataService.createEmployee(user);
             return "/app/login.xhtml?faces-redirect=true";
         }
         return "/register.xhtml?faces-redirect=true";

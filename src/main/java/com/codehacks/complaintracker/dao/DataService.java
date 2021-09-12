@@ -1,5 +1,6 @@
 package com.codehacks.complaintracker.dao;
 
+import com.codehacks.complaintracker.entities.Employee;
 import com.codehacks.complaintracker.entities.User;
 import java.util.List;
 import java.util.Optional;
@@ -27,20 +28,28 @@ public class DataService {
     @Transactional
     public User createUser(String email, String username, String password, String group) {
         String hashedPassword = passwordHasher.generate(password.toCharArray());
-        //hashedPassword = hashedPassword.substring(25);
         User newUser = new User(email, username, hashedPassword, group);
         em.persist(newUser);
         em.flush();
         return newUser;
     }
 
-    public List<User> getAllUsers() {
-        List<User> allUsers = em.createNamedQuery("User.all", User.class).getResultList();
+    @Transactional
+    public Employee createEmployee(Employee employee) {
+        String hashedPassword = passwordHasher.generate(employee.getPassword().toCharArray());
+        employee.setPassword(hashedPassword);
+        em.persist(employee);
+        em.flush();
+        return employee;
+    }
+    
+    public List<Employee> getAllEmployees() {
+        List<Employee> allUsers = em.createNamedQuery("Employee.all", Employee.class).getResultList();
         return allUsers;
     }
     
-    public Optional<User> getUser(String email) {
-        Optional<User> user = em.createNamedQuery("User.byEmail", User.class)
+    public Optional<Employee> getAnEmployee(String email) {
+        Optional<Employee> user = em.createNamedQuery("Employee.byEmail", Employee.class)
                 .setParameter("email", email)
                 .getResultList()
                 .stream()
