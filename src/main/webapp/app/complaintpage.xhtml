@@ -4,32 +4,35 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    
+
     <f:view>
-        <head>
+        <h:head>
             <title>Complaint</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        </head>
-        <body>
+        </h:head>
+        <h:body>
 
             <h2>You can make your complaints...</h2>
 
+            <!-- 1. Display the employee's username-->
+            <f:facet name="header">
+                 value=#{employeeController.getEmployeeUsername(loginController.email)}
+            </f:facet>
+            
             <h:form>
-                
                 <!-- 
-                    1. Display the employee's username
                     2. Create a text box for the complaint title
-                    3. Create a text area for the complaint's message
+                    3. Create a text area for the complaint's description
                     4. Create a text to choose manager
-                
+                    5. Create calendar for Date created
                 -->
-                
+
                 <p:commandButton id="submit" update="@form" value="Submit" 
                                  action="#{complaintController.processComplaint()}" ajax="false" />
-                
+
                 <p:commandButton id="logout" update="@form" value="Logout" 
                                  action="#{homeController.logout()}" ajax="false" />
             </h:form>
-        </body>
+        </h:body>
     </f:view>
 </html>
