@@ -16,6 +16,14 @@
 
             <h:form>
                 
+                <!-- 
+                    1. Display the employee's username
+                    2. Create a text box for the complaint title
+                    3. Create a text area for the complaint's message
+                    4. Create a text to choose manager
+                
+                -->
+                
                 <p:commandButton id="submit" update="@form" value="Submit" 
                                  action="#{complaintController.processComplaint()}" ajax="false" />
                 
