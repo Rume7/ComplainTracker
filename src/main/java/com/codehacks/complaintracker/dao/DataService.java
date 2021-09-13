@@ -1,7 +1,6 @@
 package com.codehacks.complaintracker.dao;
 
 import com.codehacks.complaintracker.entities.Employee;
-import com.codehacks.complaintracker.entities.User;
 import java.util.List;
 import java.util.Optional;
 import javax.enterprise.context.ApplicationScoped;
@@ -26,9 +25,9 @@ public class DataService {
     Pbkdf2PasswordHash passwordHasher;
     
     @Transactional
-    public User createUser(String email, String username, String password, String group) {
+    public Employee createUser(String email, String username, String password, String group) {
         String hashedPassword = passwordHasher.generate(password.toCharArray());
-        User newUser = new User(email, username, hashedPassword, group);
+        Employee newUser = new Employee(email, username, hashedPassword, group);
         em.persist(newUser);
         em.flush();
         return newUser;

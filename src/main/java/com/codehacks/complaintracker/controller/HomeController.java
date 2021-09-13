@@ -5,7 +5,7 @@ package com.codehacks.complaintracker.controller;
  * @date Sept 7, 2021
  */
 import com.codehacks.complaintracker.dao.DataService;
-import com.codehacks.complaintracker.entities.User;
+import com.codehacks.complaintracker.entities.Employee;
 import java.util.Optional;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
@@ -25,9 +25,9 @@ public class HomeController {
     @Inject
     FacesContext facesContext;
     
-    private Optional<User> currentUser;
+    private Optional<Employee> currentUser;
     
-    public User getCurrentUser() {
+    public Employee getCurrentUser() {
         return this.currentUser.orElse(null);
     }
     
