@@ -25,6 +25,7 @@ public class Employee implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="Id")
     private Long id;
     
     @Column(name="email", nullable=false, unique=true)

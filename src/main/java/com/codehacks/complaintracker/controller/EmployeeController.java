@@ -14,19 +14,27 @@ import javax.inject.Named;
 
 @RequestScoped
 @Named
-public class UsersController {
+public class EmployeeController {
     
     @Inject
     DataService dataService;
     
-    private List<Employee> allUsers;
+    private List<Employee> allEmployees;
     
     //@PostConstruct
     public void initialize() {
-        this.allUsers = dataService.getAllEmployees();
+        this.allEmployees = dataService.getAllEmployees();
     }
 
-    public List<Employee> getAllUsers() {
-        return allUsers;
+    public List<Employee> getAllEmployees() {
+        return allEmployees;
+    }
+    
+    public Employee getEmployee(String emailAddress) {
+        return dataService.getAnEmployee(emailAddress).get();
+    }
+    
+    public String getEmployeeUsername(String emailAddress) {
+        return getEmployee(emailAddress).getUsername();
     }
 }
