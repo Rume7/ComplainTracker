@@ -28,57 +28,14 @@ public class RegistrationController {
     @Inject
     FacesContext facesContext;
 
-    private Registration registeredUser;
-
-    @NotEmpty
-    private String username;
-
-    @NotEmpty
-    private String firstname;
-
-    @NotEmpty
-    private String lastname;
-
-    @NotEmpty
-    private String emailAddress;
+    @Inject
+    Registration registeredUser;
 
     @NotEmpty
     private String password;
 
     @NotEmpty
     private String confirmPassword;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
 
     public String getPassword() {
         return password;
@@ -98,9 +55,12 @@ public class RegistrationController {
 
     public String submit() throws ServletException {
         if (getPassword().equals(getConfirmPassword())) {
-            registeredUser = new Registration(username, firstname, lastname, emailAddress, password);
+            registeredUser = new Registration(registeredUser.getUsername(), 
+                    registeredUser.getFirstname(), registeredUser.getLastname(),
+                    registeredUser.getEmailAddress(), registeredUser.getPassword());
             registerDataService.registerUser(registeredUser);
-            Employee user = new Employee(emailAddress, username, password, "Regular");
+            Employee user = new Employee(registeredUser.getEmailAddress(), 
+                    registeredUser.getUsername(), registeredUser.getPassword(), "Regular");
             dataService.createEmployee(user);
             return "/app/login.xhtml?faces-redirect=true";
         }

@@ -7,14 +7,15 @@ package com.codehacks.complaintracker.controller;
 
 import com.codehacks.complaintracker.dao.DataService;
 import com.codehacks.complaintracker.entities.Employee;
+import java.io.Serializable;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@RequestScoped
+@SessionScoped
 @Named
-public class EmployeeController {
+public class EmployeeController implements Serializable {
     
     @Inject
     DataService dataService;

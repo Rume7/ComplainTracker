@@ -1,7 +1,8 @@
 package com.codehacks.complaintracker.controller;
 
 import java.io.IOException;
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -19,9 +20,9 @@ import javax.validation.constraints.NotEmpty;
  *
  * @author Rhume
  */
-@RequestScoped
+@SessionScoped
 @Named
-public class LoginController {
+public class LoginController implements Serializable {
 
     @NotEmpty
     private String email;

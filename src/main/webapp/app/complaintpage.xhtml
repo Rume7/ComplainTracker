@@ -15,20 +15,48 @@
             <h2>You can make your complaints...</h2>
 
             <!-- 1. Display the employee's username-->
+            <h:outputText value="#{loginController.email}" />
+
             <f:facet name="header">
-                 value=#{employeeController.getEmployeeUsername(loginController.email)}
+                <h:outputText value="#{employeeController.getEmployeeUsername(loginController.email)}" />
             </f:facet>
-            
+
             <h:form>
-                <!-- 
-                    2. Create a text box for the complaint title
-                    3. Create a text area for the complaint's description
-                    4. Create a text to choose manager
-                    5. Create calendar for Date created
-                -->
+                <h:dataTable>
+                    <h:column></h:column>
+                    <h:column></h:column>
+                    <tr>
+                        <td><h:outputLabel for="title" value="Title" /></td>
+                        <td><h:inputText id="title" value="#{complaintController.createComplaint().title}" /></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel for="description" value="Description" /></td>
+                        <td><h:inputTextarea id="description" value="#{complaintController.createComplaint().description}" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </h:dataTable>
+                
+                <!-- 2. Create a text box for the complaint title -->
+                <h:outputLabel for="title" value="Title" />
+                <h:inputText id="title" value="#{complaintController.createComplaint().title}" />
+
+                <!--3. Create a text area for the complaint's description-->
+                <h:outputLabel for="description" value="Description" />
+                <h:inputTextarea id="description" value="#{complaintController.createComplaint().description}" />
+
+                <!--4. Create a text to choose manager-->
+                <h:outputLabel for="manager" value="Manager" />
+                <h:inputText id="manager" value="#{complaintController.createComplaint().managerAssigned}" />
+
+                <!--5. Create calendar for Date created -->
+                <h:outputLabel for="date" value="Date" />
+                <h:inputText id="date" value="#{complaintController.createComplaint().dateCreated}" />
 
                 <p:commandButton id="submit" update="@form" value="Submit" 
-                                 action="#{complaintController.processComplaint()}" ajax="false" />
+                                 action="#{complaintController.processComplaint()}" ajax="true" />
 
                 <p:commandButton id="logout" update="@form" value="Logout" 
                                  action="#{homeController.logout()}" ajax="false" />

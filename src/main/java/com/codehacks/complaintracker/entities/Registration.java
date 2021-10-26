@@ -20,7 +20,7 @@ public class Registration implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="Id")
-    public Long id;
+    private Long id;
     
     private String username;
     
